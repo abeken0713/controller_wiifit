@@ -22,7 +22,7 @@ static void NSLogDebugBlock(NSString *prompt, unsigned dataLength, unsigned char
 #endif
 }
 
-static WiiJoyStickCalibData kWiiNullJoystickCalibData = {0, 0, 0, 0, 0, 0};
+//static WiiJoyStickCalibData kWiiNullJoystickCalibData = {0, 0, 0, 0, 0, 0};
 static WiiAccCalibData kWiiNullAccCalibData = {0, 0, 0, 0, 0, 0};
 static WiiBalanceBeamCalibData kWiiNullBalanceBeamCalibData = {
 	{0, 0, 0, 0}
@@ -57,27 +57,7 @@ typedef enum {
 	kWiiRemoteDownButton				= 0x0400,
 	kWiiRemoteUpButton					= 0x0800,
 	kWiiRemotePlusButton				= 0x1000,
-
-	kWiiNunchukZButton					= 0x0001,
-	kWiiNunchukCButton					= 0x0002,
-
-	kWiiClassicControllerUpButton		= 0x0001,
-	kWiiClassicControllerLeftButton		= 0x0002,
-	kWiiClassicControllerZRButton		= 0x0004,
-	kWiiClassicControllerXButton		= 0x0008,
-	kWiiClassicControllerAButton		= 0x0010,
-	kWiiClassicControllerYButton		= 0x0020,
-	kWiiClassicControllerBButton		= 0x0040,
-	kWiiClassicControllerZLButton		= 0x0080,
-	kWiiClassicControllerUnUsedButton	= 0x0100,
-	kWiiClassicControllerRButton		= 0x0200,
-	kWiiClassicControllerPlusButton		= 0x0400,
-	kWiiClassicControllerHomeButton		= 0x0800,
-	kWiiClassicControllerMinusButton	= 0x1000,
-	kWiiClassicControllerLButton		= 0x2000,
-	kWiiClassicControllerDownButton		= 0x4000,
-	kWiiClassicControllerRightButton	= 0x8000
-	
+    
 } WiiButtonBitMask;
 
 #pragma mark -
@@ -208,7 +188,6 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		[self setForceFeedbackEnabled:NO];
 		[self setLEDEnabled1:NO enabled2:NO enabled3:NO enabled4:NO];
 		[self updateReportMode];
-//		ret = [self doUpdateReportMode];
 	}
 	
 	if ((ret == kIOReturnSuccess) && [self available]) {
@@ -226,8 +205,6 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 {
 	NSLogDebug (@"Disconnected.");
 	if (device == _wiiDevice) {
-//		_cchan = nil;
-//		_ichan = nil;
 		[self closeConnection];
 	}
 }
@@ -241,12 +218,6 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 	memcpy (buf+1, data, length);
 	if (buf[1] == 0x16) length = 23;
 	else				length++;
-
-//	printf ("send%3d:", length);
-//	for(i=0 ; i<length ; i++) {
-//		printf(" %02X", buf[i]);
-//	}
-//	printf("\n");
 	NSLogDebugBlock(@"send:", length, buf);
 	
 	IOReturn ret = kIOReturnSuccess;
@@ -259,7 +230,6 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		if (ret != kIOReturnSuccess) {
 			NSLogDebug(@"Write Error for command 0x%x:", buf[1], ret);		
 			LogIOReturn (ret);
-//			[self closeConnection];
 			usleep (10000);
 		}
 		else
@@ -603,51 +573,29 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 	 **/
 - (void) handleRAMData:(unsigned char *) dp length:(size_t) dataLength
 {
-	/**
-	if (dp[1] == 0x21){
-		int i;
-		
-		printf ("ack%3d:", dataLength);
-		for(i=0 ; i<dataLength ; i++) {
-			printf(" %02X", dp[i]);
-		}
-		printf("\n");
-	}**/
-
 	unsigned short addr = (dp[5] * 256) + dp[6];
 	NSLogDebug (@"handleRAMData (0x21) addr=0x%x", addr);
 	
-	//mii data
-    /*
-	if ((dataLength >= 20) && (addr >= WIIMOTE_MII_DATA_BEGIN_ADDR) && (addr <= WIIMOTE_MII_CHECKSUM1_ADDR)) { 
-		if ([_delegate respondsToSelector:@selector (gotMiidata:at:)]) {
-			int slot = MII_SLOT(addr);
-			int len = dataLength - 7;
-			memcpy (&mii_data_buf[mii_data_offset], &dp[7], len);
-			mii_data_offset += len;
-			if (mii_data_offset >= WIIMOTE_MII_DATA_BYTES_PER_SLOT)
-				[_delegate gotMiiData: (Mii *)mii_data_buf at: slot];
-		}		
-	}
-     */
 	// specify attached expasion device
 	if (addr == 0x00F0) {
 		NSLogDebug (@"Expansion device connected.");
 		
 		switch (WII_DECRYPT(dp[21])) {
 			case 0x00:
+                /*
 				NSLogDebug (@"Nunchuk connected.");
 				if (expType != WiiNunchuk) {
 					expType = WiiNunchuk;
 					[[NSNotificationCenter defaultCenter] postNotificationName:WiiRemoteExpansionPortChangedNotification object:self];
-				}
+				}*/
 				break;
 			case 0x01:
+                /*
 				NSLogDebug (@"Classic controller connected.");
 				if (expType != WiiClassicController) {
 					expType = WiiClassicController;
 					[[NSNotificationCenter defaultCenter] postNotificationName:WiiRemoteExpansionPortChangedNotification object:self];				
-				}
+				}*/
 				break;
 			case 0x2A:
 				NSLogDebug (@"Balance Beam connected.");
@@ -657,14 +605,15 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 				}
 				break;
 			default:
+                /*
 				NSLogDebug (@"Unknown device connected (0x%x). ", WII_DECRYPT(dp[21]));
-				expType = WiiExpNotAttached;
+				expType = WiiExpNotAttached;*/
 				break;
 		}
 
 		return;
 	}
-		
+    
 	// wiimote calibration data
 	if (!_shouldReadExpansionCalibration && (addr == 0x0020)) {
 		NSLogDebug (@"Read Wii calibration");
@@ -726,7 +675,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 				balanceBeamCalibData.isInitialized = AreQuadsValid(balanceBeamCalibData.quad);
 			}
 			return;
-		} else if (addr == 0x0020) {
+		} /*else if (addr == 0x0020) {
 			if (expType == WiiNunchuk) {
 				NSLogDebug (@"Read nunchuk calibration");
 				//nunchuk calibration data
@@ -751,12 +700,12 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 			} else if (expType == WiiClassicController) {
 				//classic controller calibration data (probably)
 			}
-		}
+		}*/
 	} // expansion device calibration data
 	
 	// wiimote buttons
-	buttonData = ((short)dp[2] << 8) + dp[3];
-	[self sendWiiRemoteButtonEvent:buttonData];
+	//buttonData = ((short)dp[2] << 8) + dp[3];
+	//[self sendWiiRemoteButtonEvent:buttonData];
 } // handleRAMData
 
 - (void) handleStatusReport:(unsigned char *) dp length:(size_t) dataLength
@@ -840,6 +789,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 	}
 	
 	switch (expType) {
+            /*
 		case WiiNunchuk:
 			nStickX		= WII_DECRYPT(dp[startByte +0]);
 			nStickY		= WII_DECRYPT(dp[startByte +1]);
@@ -887,6 +837,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 			}			
 
 			break;
+             */
 		case WiiBalanceBeam:
 			{
 				startByte = 4;
@@ -1206,7 +1157,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		}
 	}
 }
-
+/*
 - (void)sendWiiNunchukButtonEvent:(UInt16)data{
 	if (!(data & kWiiNunchukCButton)){
 		if (!buttonState[WiiNunchukCButton]){
@@ -1447,7 +1398,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		}
 	}
 }
-/*
+
 - (IOReturn) getMii:(unsigned int) slot
 {
 	mii_data_offset = 0;
@@ -1478,7 +1429,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 {
 	return buttonState[type];
 }
-
+/*
 - (WiiJoyStickCalibData) joyStickCalibData:(WiiJoyStickType) type
 {
 	switch (type) {
@@ -1488,14 +1439,14 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 			return kWiiNullJoystickCalibData;
 	}
 }
-
+*/
 - (WiiAccCalibData) accCalibData:(WiiAccelerationSensorType) type
 {
 	switch (type) {
 		case WiiRemoteAccelerationSensor:
 			return wiiCalibData;
-		case WiiNunchukAccelerationSensor:
-			return nunchukCalibData;
+		//case WiiNunchukAccelerationSensor:
+		//	return nunchukCalibData;
 		default:
 			return kWiiNullAccCalibData;
 	}

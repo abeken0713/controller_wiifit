@@ -40,11 +40,11 @@ typedef struct {
 typedef struct {
 	unsigned short accX_zero, accY_zero, accZ_zero, accX_1g, accY_1g, accZ_1g; 
 } WiiAccCalibData;
-
+/*
 typedef struct {
 	unsigned short x_min, x_max, x_center, y_min, y_max, y_center; 
 } WiiJoyStickCalibData;
-
+*/
 typedef struct WiiQuad {
 	unsigned short topRight, bottomRight, topLeft, bottomLeft;
 } WiiQuad;
@@ -147,7 +147,7 @@ typedef enum {
   
 	WiiExpansionPortType expType;
 	WiiAccCalibData wiiCalibData, nunchukCalibData;
-	WiiJoyStickCalibData nunchukJoyStickCalibData;
+	//WiiJoyStickCalibData nunchukJoyStickCalibData;
 	WiiBalanceBeamCalibData balanceBeamCalibData;
 	WiiIRModeType wiiIRMode;
 	IRData	irData[4];
@@ -193,7 +193,7 @@ typedef enum {
 - (BOOL) isExpansionPortAttached;
 - (BOOL) available;
 - (BOOL) isButtonPressed:(WiiButtonType) type;
-- (WiiJoyStickCalibData) joyStickCalibData:(WiiJoyStickType) type;
+//- (WiiJoyStickCalibData) joyStickCalibData:(WiiJoyStickType) type;
 - (WiiAccCalibData) accCalibData:(WiiAccelerationSensorType) type;
 
 - (IOReturn) connectTo:(IOBluetoothDevice*) device;
