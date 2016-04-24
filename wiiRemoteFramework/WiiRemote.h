@@ -70,24 +70,6 @@ typedef enum {
 	WiiRemoteLeftButton,
 	WiiRemoteRightButton,
 	
-	WiiNunchukZButton,
-	WiiNunchukCButton,
-	
-	WiiClassicControllerXButton,
-	WiiClassicControllerYButton,
-	WiiClassicControllerAButton,
-	WiiClassicControllerBButton,
-	WiiClassicControllerLButton,
-	WiiClassicControllerRButton,
-	WiiClassicControllerZLButton,
-	WiiClassicControllerZRButton,
-	WiiClassicControllerUpButton,
-	WiiClassicControllerDownButton,
-	WiiClassicControllerLeftButton,
-	WiiClassicControllerRightButton,
-	WiiClassicControllerMinusButton,
-	WiiClassicControllerHomeButton,
-	WiiClassicControllerPlusButton
 } WiiButtonType;
 
 //unsigned char mii_data_buf[WIIMOTE_MII_DATA_BYTES_PER_SLOT + 16];
@@ -137,7 +119,6 @@ typedef enum {
   
 	WiiExpansionPortType expType;
 	WiiAccCalibData wiiCalibData, nunchukCalibData;
-	//WiiJoyStickCalibData nunchukJoyStickCalibData;
 	WiiBalanceBeamCalibData balanceBeamCalibData;
 	WiiIRModeType wiiIRMode;
 	IRData	irData[4];
@@ -154,24 +135,6 @@ typedef enum {
 	unsigned short accY;
 	unsigned short accZ;
 	unsigned short buttonData;	
-	
-	//nunchuk
-	unsigned short nStickX;
-	unsigned short nStickY;
-	unsigned short nAccX;
-	unsigned short nAccY;
-	unsigned short nAccZ;
-	unsigned short nButtonData;
-	
-	// classic controller
-	unsigned short cButtonData;
-	unsigned short cStickX1;
-	unsigned short cStickY1;
-	unsigned short cStickX2;
-	unsigned short cStickY2;
-	unsigned short cAnalogL;
-	unsigned short cAnalogR;
-
 	// balance beam
 	WiiQuad bb;
 } 
