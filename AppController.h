@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-#import "PrefsController.h"
+//#import "PrefsController.h"
 #import "WiiRemote.h"
 #import "WiiRemoteDiscovery.h"
 #import "FPLevelIndicator.h"
@@ -18,7 +18,7 @@
 	IBOutlet NSMenuItem* fileTare;
     IBOutlet NSButton *profileButton;
 	IBOutlet NSWindow* prefs;
-	IBOutlet PrefsController *prefsController;
+	//IBOutlet PrefsController *prefsController;
     
     NSMutableArray *profiles;
     NSDictionary *strings;

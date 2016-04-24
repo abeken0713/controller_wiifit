@@ -227,7 +227,7 @@ typedef enum {
 
 - (void) irPointMovedX:(float) px Y:(float) py;
 
-- (void) joyStickChanged:(WiiJoyStickType) type tiltX:(unsigned short) tiltX tiltY:(unsigned short) tiltY;
+//- (void) joyStickChanged:(WiiJoyStickType) type tiltX:(unsigned short) tiltX tiltY:(unsigned short) tiltY;
 
 // raw values from the Balance Beam
 - (void) balanceBeamChangedTopRight:(int)topRight

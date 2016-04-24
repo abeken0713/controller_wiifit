@@ -1,7 +1,7 @@
 #import "AppController.h"
 
 @implementation AppController
-
+/*
 #pragma mark Preferences
 
 - (IBAction)showPrefs:(id)sender
@@ -57,7 +57,7 @@
     }
     
 }
-
+*/
 #pragma mark Window
 
 - (id)init

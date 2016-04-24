@@ -10,7 +10,6 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		732E12C514C26ACD00818EF5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 732E12C414C26ACD00818EF5 /* LICENSE */; };
 		73A97EDD14C27DB100312F8B /* TextStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73A97EDC14C27DB100312F8B /* TextStrings.plist */; };
-		82501D511262C86A00355019 /* PrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82501D501262C86A00355019 /* PrefsController.m */; };
 		825226A212626F23002A257A /* WiiScale.icns in Resources */ = {isa = PBXBuildFile; fileRef = 825226A112626F23002A257A /* WiiScale.icns */; };
 		825D9F05108BD2E40009E075 /* WiiRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = 825D9F01108BD2E40009E075 /* WiiRemote.m */; };
 		825D9F06108BD2E40009E075 /* WiiRemoteDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 825D9F03108BD2E40009E075 /* WiiRemoteDiscovery.m */; };
@@ -45,8 +44,6 @@
 		32CA4F630368D1EE00C91783 /* WiiScale_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiScale_Prefix.pch; sourceTree = "<group>"; };
 		732E12C414C26ACD00818EF5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		73A97EDC14C27DB100312F8B /* TextStrings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextStrings.plist; sourceTree = "<group>"; };
-		82501D4F1262C86A00355019 /* PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsController.h; sourceTree = "<group>"; };
-		82501D501262C86A00355019 /* PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsController.m; sourceTree = "<group>"; };
 		825226A112626F23002A257A /* WiiScale.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = WiiScale.icns; sourceTree = "<group>"; };
 		825D9F00108BD2E40009E075 /* WiiRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemote.h; sourceTree = "<group>"; };
 		825D9F01108BD2E40009E075 /* WiiRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiiRemote.m; sourceTree = "<group>"; };
@@ -79,8 +76,6 @@
 			children = (
 				825D9F0E108BD33C0009E075 /* AppController.h */,
 				825D9F0F108BD33C0009E075 /* AppController.m */,
-				82501D4F1262C86A00355019 /* PrefsController.h */,
-				82501D501262C86A00355019 /* PrefsController.m */,
 				82673D16129C9EB30067ADE1 /* FPLevelIndicator.h */,
 				82673D17129C9EB30067ADE1 /* FPLevelIndicator.m */,
 			);
@@ -240,7 +235,6 @@
 				825D9F05108BD2E40009E075 /* WiiRemote.m in Sources */,
 				825D9F06108BD2E40009E075 /* WiiRemoteDiscovery.m in Sources */,
 				825D9F10108BD33C0009E075 /* AppController.m in Sources */,
-				82501D511262C86A00355019 /* PrefsController.m in Sources */,
 				82673D18129C9EB30067ADE1 /* FPLevelIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

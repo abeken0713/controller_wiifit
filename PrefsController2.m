@@ -6,7 +6,7 @@
 //  Copyright 2010 Ford Parsons. All rights reserved.
 //
 
-#import "PrefsController.h"
+#import "PrefsController2.h"
 
 
 @implementation PrefsController
