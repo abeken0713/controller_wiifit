@@ -6,8 +6,6 @@
 
 - (IBAction)showPrefs:(id)sender
 {
-    
-    
     if ([profilesPopUp indexOfSelectedItem] < [profilesPopUp itemArray].count-2) {
         [[NSUserDefaults standardUserDefaults] setValue:profilesPopUp.selectedItem.title forKey:@"username"];
         prefsController.newUser = false;

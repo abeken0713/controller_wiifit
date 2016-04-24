@@ -182,6 +182,7 @@
 	while ((device = [en nextObject]) != nil) {
 		WiiRemote * wii = [[[WiiRemote alloc] init] autorelease];
 		IOReturn ret = [wii connectTo:device];
+        NSLog(@"device ID: %@", device);
 		
 		if (ret == kIOReturnSuccess)
 			[_delegate WiiRemoteDiscovered:wii];
