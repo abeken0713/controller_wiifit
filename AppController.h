@@ -43,7 +43,6 @@
 - (IBAction)doDiscovery:(id)sender;
 - (IBAction)doTare:(id)sender;
 
-- (IBAction)showPrefs:(id)sender;
-- (IBAction)profileChanged:(id)sender;
+
 
 @end
