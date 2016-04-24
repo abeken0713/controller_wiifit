@@ -6,7 +6,7 @@
 //  Copyright 2006 KIMURA Hiroaki. All rights reserved.
 //  Modifications for Wii Balance Beam by David Phillip Oster 11/23/08
 
-#import "Mii.h"
+//#import "Mii.h"
 
 #import <Cocoa/Cocoa.h>
 #import <IOBluetooth/objc/IOBluetoothDevice.h>
@@ -90,8 +90,8 @@ typedef enum {
 	WiiClassicControllerPlusButton
 } WiiButtonType;
 
-unsigned char mii_data_buf[WIIMOTE_MII_DATA_BYTES_PER_SLOT + 16];
-unsigned short mii_data_offset;
+//unsigned char mii_data_buf[WIIMOTE_MII_DATA_BYTES_PER_SLOT + 16];
+//unsigned short mii_data_offset;
 
 typedef enum {
 	WiiExpNotAttached,
@@ -211,7 +211,7 @@ typedef enum {
 - (void) setExpansionPortEnabled:(BOOL) enabled;
 - (void) setLEDEnabled1:(BOOL) enabled1 enabled2:(BOOL) enabled2 enabled3:(BOOL) enabled3 enabled4:(BOOL) enabled4;
 
-- (IOReturn) getMii:(unsigned int) slot;
+//- (IOReturn) getMii:(unsigned int) slot;
 
 - (void) sendWiiRemoteButtonEvent:(UInt16) data;
 - (void) sendWiiNunchukButtonEvent:(UInt16) data;
@@ -233,7 +233,7 @@ typedef enum {
 
 - (void) batteryLevelChanged:(double) level;
 
-- (void) gotMiiData: (Mii*) mii_data_buf at: (int) slot;
+//- (void) gotMiiData: (Mii*) mii_data_buf at: (int) slot;
 
 - (void) irPointMovedX:(float) px Y:(float) py;
 

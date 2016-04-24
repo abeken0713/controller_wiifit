@@ -48,7 +48,6 @@
 		82501D4F1262C86A00355019 /* PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsController.h; sourceTree = "<group>"; };
 		82501D501262C86A00355019 /* PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsController.m; sourceTree = "<group>"; };
 		825226A112626F23002A257A /* WiiScale.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = WiiScale.icns; sourceTree = "<group>"; };
-		825D9EFF108BD2E40009E075 /* Mii.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mii.h; sourceTree = "<group>"; };
 		825D9F00108BD2E40009E075 /* WiiRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemote.h; sourceTree = "<group>"; };
 		825D9F01108BD2E40009E075 /* WiiRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiiRemote.m; sourceTree = "<group>"; };
 		825D9F02108BD2E40009E075 /* WiiRemoteDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemoteDiscovery.h; sourceTree = "<group>"; };
@@ -163,7 +162,6 @@
 		825D9EFE108BD2E40009E075 /* wiiRemoteFramework */ = {
 			isa = PBXGroup;
 			children = (
-				825D9EFF108BD2E40009E075 /* Mii.h */,
 				825D9F00108BD2E40009E075 /* WiiRemote.h */,
 				825D9F01108BD2E40009E075 /* WiiRemote.m */,
 				825D9F02108BD2E40009E075 /* WiiRemoteDiscovery.h */,

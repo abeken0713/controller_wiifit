@@ -618,6 +618,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 	NSLogDebug (@"handleRAMData (0x21) addr=0x%x", addr);
 	
 	//mii data
+    /*
 	if ((dataLength >= 20) && (addr >= WIIMOTE_MII_DATA_BEGIN_ADDR) && (addr <= WIIMOTE_MII_CHECKSUM1_ADDR)) { 
 		if ([_delegate respondsToSelector:@selector (gotMiidata:at:)]) {
 			int slot = MII_SLOT(addr);
@@ -628,7 +629,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 				[_delegate gotMiiData: (Mii *)mii_data_buf at: slot];
 		}		
 	}
-
+     */
 	// specify attached expasion device
 	if (addr == 0x00F0) {
 		NSLogDebug (@"Expansion device connected.");
@@ -1446,13 +1447,13 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		}
 	}
 }
-
+/*
 - (IOReturn) getMii:(unsigned int) slot
 {
 	mii_data_offset = 0;
 	return [self readData:MII_OFFSET(slot) length:WIIMOTE_MII_DATA_BYTES_PER_SLOT];
 }
-
+*/
 - (IOReturn) getCurrentStatus:(NSTimer*) timer
 {
 	unsigned char cmd[] = {0x15, 0x00};
