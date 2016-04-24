@@ -95,22 +95,12 @@ typedef enum {
 
 typedef enum {
 	WiiExpNotAttached,
-	WiiNunchuk,
-	WiiClassicController,
 	WiiBalanceBeam,
 }  WiiExpansionPortType;
 
 typedef enum {
 	WiiRemoteAccelerationSensor,
-	WiiNunchukAccelerationSensor
 } WiiAccelerationSensorType;
-
-
-typedef enum {
-	WiiNunchukJoyStick					= 0,
-	WiiClassicControllerLeftJoyStick	= 1,
-	WiiClassicControllerRightJoyStick	= 2
-} WiiJoyStickType;
 
 @protocol WiiRemoteDelegate;
 

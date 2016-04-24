@@ -581,22 +581,6 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		NSLogDebug (@"Expansion device connected.");
 		
 		switch (WII_DECRYPT(dp[21])) {
-			case 0x00:
-                /*
-				NSLogDebug (@"Nunchuk connected.");
-				if (expType != WiiNunchuk) {
-					expType = WiiNunchuk;
-					[[NSNotificationCenter defaultCenter] postNotificationName:WiiRemoteExpansionPortChangedNotification object:self];
-				}*/
-				break;
-			case 0x01:
-                /*
-				NSLogDebug (@"Classic controller connected.");
-				if (expType != WiiClassicController) {
-					expType = WiiClassicController;
-					[[NSNotificationCenter defaultCenter] postNotificationName:WiiRemoteExpansionPortChangedNotification object:self];				
-				}*/
-				break;
 			case 0x2A:
 				NSLogDebug (@"Balance Beam connected.");
 				if (expType != WiiBalanceBeam) {
@@ -675,32 +659,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 				balanceBeamCalibData.isInitialized = AreQuadsValid(balanceBeamCalibData.quad);
 			}
 			return;
-		} /*else if (addr == 0x0020) {
-			if (expType == WiiNunchuk) {
-				NSLogDebug (@"Read nunchuk calibration");
-				//nunchuk calibration data
-				nunchukCalibData.accX_zero =  WII_DECRYPT(dp[7]);
-				nunchukCalibData.accY_zero =  WII_DECRYPT(dp[8]);
-				nunchukCalibData.accZ_zero =  WII_DECRYPT(dp[9]);
-				
-				nunchukCalibData.accX_1g =  WII_DECRYPT(dp[11]);
-				nunchukCalibData.accY_1g =  WII_DECRYPT(dp[12]);
-				nunchukCalibData.accZ_1g =  WII_DECRYPT(dp[13]);
-				
-				nunchukJoyStickCalibData.x_max =  WII_DECRYPT(dp[15]);
-				nunchukJoyStickCalibData.x_min =  WII_DECRYPT(dp[16]);
-				nunchukJoyStickCalibData.x_center =  WII_DECRYPT(dp[17]);
-				
-				nunchukJoyStickCalibData.y_max =  WII_DECRYPT(dp[18]);
-				nunchukJoyStickCalibData.y_min =  WII_DECRYPT(dp[19]);
-				nunchukJoyStickCalibData.y_center =  WII_DECRYPT(dp[20]);	
-				
-				_shouldReadExpansionCalibration = NO;
-				return;
-			} else if (expType == WiiClassicController) {
-				//classic controller calibration data (probably)
-			}
-		}*/
+		}
 	} // expansion device calibration data
 	
 	// wiimote buttons
@@ -789,56 +748,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 	}
 	
 	switch (expType) {
-            /*
-		case WiiNunchuk:
-			nStickX		= WII_DECRYPT(dp[startByte +0]);
-			nStickY		= WII_DECRYPT(dp[startByte +1]);
-			nAccX		= WII_DECRYPT(dp[startByte +2]);
-			nAccY		= WII_DECRYPT(dp[startByte +3]);
-			nAccZ		= WII_DECRYPT(dp[startByte +4]);
-			nButtonData	= WII_DECRYPT(dp[startByte +5]);
-
-			[self sendWiiNunchukButtonEvent:nButtonData];
-			
-			if ([_delegate respondsToSelector:@selector (accelerationChanged:accX:accY:accZ:)])
-				[_delegate accelerationChanged:WiiNunchukAccelerationSensor accX:nAccX accY:nAccY accZ:nAccZ];
-				
-			if ([_delegate respondsToSelector:@selector (joyStickChanged:tiltX:tiltY:)])
-				[_delegate joyStickChanged:WiiNunchukJoyStick tiltX:nStickX tiltY:nStickY];
-			
-			break;
-			
-		case WiiClassicController:
-			cButtonData = (unsigned short)((WII_DECRYPT(dp[startByte+4]) << 8) + WII_DECRYPT(dp[startByte+5]));
-
-			cStickX1 = WII_DECRYPT(dp[startByte +0]) & 0x3F;
-			cStickY1 = WII_DECRYPT(dp[startByte +1]) & 0x3F;
-			
-			cStickX2 =
-				(((WII_DECRYPT(dp[startByte +0]) & 0xC0) >> 3) |
-				 ((WII_DECRYPT(dp[startByte +1]) & 0xC0) >> 5) |
-				 ((WII_DECRYPT(dp[startByte +2]) & 0x80) >> 7)) & 0x1F;
-			cStickY2 = WII_DECRYPT(dp[startByte +2]) & 0x1F;
-			
-			cAnalogL =
-				(((WII_DECRYPT(dp[startByte +2]) & 0x60) >> 2) |
-				 ((WII_DECRYPT(dp[startByte +3]) & 0xE0) >> 5)) & 0x1F;
-			cAnalogR =  WII_DECRYPT(dp[startByte +3]) & 0x1F;
-			
-			[self sendWiiClassicControllerButtonEvent:cButtonData];
-			if ([_delegate respondsToSelector:@selector (joyStickChanged:tiltX:tiltY:)]) {
-				[_delegate joyStickChanged:WiiClassicControllerLeftJoyStick tiltX:cStickX1 tiltY:cStickY1];
-				[_delegate joyStickChanged:WiiClassicControllerRightJoyStick tiltX:cStickX2 tiltY:cStickY2];
-			}
-				
-			if ([_delegate respondsToSelector:@selector (analogButtonChanged:amount:)]) {
-				[_delegate analogButtonChanged:WiiClassicControllerLButton amount:cAnalogL];
-				[_delegate analogButtonChanged:WiiClassicControllerRButton amount:cAnalogR];
-			}			
-
-			break;
-             */
-		case WiiBalanceBeam:
+        case WiiBalanceBeam:
 			{
 				startByte = 4;
 				int tr = (unsigned short)((dp[startByte+0] << 8) + dp[startByte+1]);
@@ -861,6 +771,8 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 				}
 			}
 			break;
+        default:
+            break;
 	}
 } // handleExtensionData
 
@@ -1157,254 +1069,7 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 		}
 	}
 }
-/*
-- (void)sendWiiNunchukButtonEvent:(UInt16)data{
-	if (!(data & kWiiNunchukCButton)){
-		if (!buttonState[WiiNunchukCButton]){
-			buttonState[WiiNunchukCButton] = YES;
-			[_delegate buttonChanged:WiiNunchukCButton isPressed:buttonState[WiiNunchukCButton]];
-		}
-	}else{
-		if (buttonState[WiiNunchukCButton]){
-			buttonState[WiiNunchukCButton] = NO;
-			[_delegate buttonChanged:WiiNunchukCButton isPressed:buttonState[WiiNunchukCButton]];
-		}
-	}
-	
-	if (!(data & kWiiNunchukZButton)){
 
-		if (!buttonState[WiiNunchukZButton]){
-			buttonState[WiiNunchukZButton] = YES;
-			[_delegate buttonChanged:WiiNunchukZButton isPressed:buttonState[WiiNunchukZButton]];
-		}
-	}else{
-		if (buttonState[WiiNunchukZButton]){
-			buttonState[WiiNunchukZButton] = NO;
-			[_delegate buttonChanged:WiiNunchukZButton isPressed:buttonState[WiiNunchukZButton]];
-		}
-	}
-}
-
-- (void)sendWiiClassicControllerButtonEvent:(UInt16)data{
-	if (!(data & kWiiClassicControllerXButton)){
-		
-		if (!buttonState[WiiClassicControllerXButton]){
-			buttonState[WiiClassicControllerXButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerXButton isPressed:buttonState[WiiClassicControllerXButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerXButton]){
-			buttonState[WiiClassicControllerXButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerXButton isPressed:buttonState[WiiClassicControllerXButton]];
-			
-		}
-	}
-
-	if (!(data & kWiiClassicControllerYButton)){
-		
-		if (!buttonState[WiiClassicControllerYButton]){
-			buttonState[WiiClassicControllerYButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerYButton isPressed:buttonState[WiiClassicControllerYButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerYButton]){
-			buttonState[WiiClassicControllerYButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerYButton isPressed:buttonState[WiiClassicControllerYButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerAButton)){
-		
-		if (!buttonState[WiiClassicControllerAButton]){
-			buttonState[WiiClassicControllerAButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerAButton isPressed:buttonState[WiiClassicControllerAButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerAButton]){
-			buttonState[WiiClassicControllerAButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerAButton isPressed:buttonState[WiiClassicControllerAButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerBButton)){
-		
-		if (!buttonState[WiiClassicControllerBButton]){
-			buttonState[WiiClassicControllerBButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerBButton isPressed:buttonState[WiiClassicControllerBButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerBButton]){
-			buttonState[WiiClassicControllerBButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerBButton isPressed:buttonState[WiiClassicControllerBButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerLButton)){
-		
-		if (!buttonState[WiiClassicControllerLButton]){
-			buttonState[WiiClassicControllerLButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerLButton isPressed:buttonState[WiiClassicControllerLButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerLButton]){
-			buttonState[WiiClassicControllerLButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerLButton isPressed:buttonState[WiiClassicControllerLButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerRButton)){
-		
-		if (!buttonState[WiiClassicControllerRButton]){
-			buttonState[WiiClassicControllerRButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerRButton isPressed:buttonState[WiiClassicControllerRButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerRButton]){
-			buttonState[WiiClassicControllerRButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerRButton isPressed:buttonState[WiiClassicControllerRButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerZLButton)){
-		
-		if (!buttonState[WiiClassicControllerZLButton]){
-			buttonState[WiiClassicControllerZLButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerZLButton isPressed:buttonState[WiiClassicControllerZLButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerZLButton]){
-			buttonState[WiiClassicControllerZLButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerZLButton isPressed:buttonState[WiiClassicControllerZLButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerZRButton)){
-		
-		if (!buttonState[WiiClassicControllerZRButton]){
-			buttonState[WiiClassicControllerZRButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerZRButton isPressed:buttonState[WiiClassicControllerZRButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerZRButton]){
-			buttonState[WiiClassicControllerZRButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerZRButton isPressed:buttonState[WiiClassicControllerZRButton]];
-			
-		}
-	}
-	
-	
-	if (!(data & kWiiClassicControllerUpButton)){
-		
-		if (!buttonState[WiiClassicControllerUpButton]){
-			buttonState[WiiClassicControllerUpButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerUpButton isPressed:buttonState[WiiClassicControllerUpButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerUpButton]){
-			buttonState[WiiClassicControllerUpButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerUpButton isPressed:buttonState[WiiClassicControllerUpButton]];
-			
-		}
-	}
-	
-	
-	if (!(data & kWiiClassicControllerDownButton)){
-		
-		if (!buttonState[WiiClassicControllerDownButton]){
-			buttonState[WiiClassicControllerDownButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerDownButton isPressed:buttonState[WiiClassicControllerDownButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerDownButton]){
-			buttonState[WiiClassicControllerDownButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerDownButton isPressed:buttonState[WiiClassicControllerDownButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerLeftButton)){
-		
-		if (!buttonState[WiiClassicControllerLeftButton]){
-			buttonState[WiiClassicControllerLeftButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerLeftButton isPressed:buttonState[WiiClassicControllerLeftButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerLeftButton]){
-			buttonState[WiiClassicControllerLeftButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerLeftButton isPressed:buttonState[WiiClassicControllerLeftButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerRightButton)){
-		
-		if (!buttonState[WiiClassicControllerRightButton]){
-			buttonState[WiiClassicControllerRightButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerRightButton isPressed:buttonState[WiiClassicControllerRightButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerRightButton]){
-			buttonState[WiiClassicControllerRightButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerRightButton isPressed:buttonState[WiiClassicControllerRightButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerMinusButton)){
-		
-		if (!buttonState[WiiClassicControllerMinusButton]){
-			buttonState[WiiClassicControllerMinusButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerMinusButton isPressed:buttonState[WiiClassicControllerMinusButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerMinusButton]){
-			buttonState[WiiClassicControllerMinusButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerMinusButton isPressed:buttonState[WiiClassicControllerMinusButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerHomeButton)){
-		
-		if (!buttonState[WiiClassicControllerHomeButton]){
-			buttonState[WiiClassicControllerHomeButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerHomeButton isPressed:buttonState[WiiClassicControllerHomeButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerHomeButton]){
-			buttonState[WiiClassicControllerHomeButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerHomeButton isPressed:buttonState[WiiClassicControllerHomeButton]];
-			
-		}
-	}
-	
-	if (!(data & kWiiClassicControllerPlusButton)){
-		
-		if (!buttonState[WiiClassicControllerPlusButton]){
-			buttonState[WiiClassicControllerPlusButton] = YES;
-			[_delegate buttonChanged:WiiClassicControllerPlusButton isPressed:buttonState[WiiClassicControllerPlusButton]];
-		}
-	}else{
-		if (buttonState[WiiClassicControllerPlusButton]){
-			buttonState[WiiClassicControllerPlusButton] = NO;
-			[_delegate buttonChanged:WiiClassicControllerPlusButton isPressed:buttonState[WiiClassicControllerPlusButton]];
-			
-		}
-	}
-}
-
-- (IOReturn) getMii:(unsigned int) slot
-{
-	mii_data_offset = 0;
-	return [self readData:MII_OFFSET(slot) length:WIIMOTE_MII_DATA_BYTES_PER_SLOT];
-}
-*/
 - (IOReturn) getCurrentStatus:(NSTimer*) timer
 {
 	unsigned char cmd[] = {0x15, 0x00};
@@ -1429,24 +1094,12 @@ float BBInterpolate(unsigned short valRaw, unsigned short val0, unsigned short v
 {
 	return buttonState[type];
 }
-/*
-- (WiiJoyStickCalibData) joyStickCalibData:(WiiJoyStickType) type
-{
-	switch (type) {
-		case WiiNunchukJoyStick:
-			return nunchukJoyStickCalibData;
-		default:
-			return kWiiNullJoystickCalibData;
-	}
-}
-*/
+
 - (WiiAccCalibData) accCalibData:(WiiAccelerationSensorType) type
 {
 	switch (type) {
 		case WiiRemoteAccelerationSensor:
 			return wiiCalibData;
-		//case WiiNunchukAccelerationSensor:
-		//	return nunchukCalibData;
 		default:
 			return kWiiNullAccCalibData;
 	}
