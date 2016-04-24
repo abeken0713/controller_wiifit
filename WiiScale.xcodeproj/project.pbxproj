@@ -52,7 +52,6 @@
 		825D9F01108BD2E40009E075 /* WiiRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiiRemote.m; sourceTree = "<group>"; };
 		825D9F02108BD2E40009E075 /* WiiRemoteDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemoteDiscovery.h; sourceTree = "<group>"; };
 		825D9F03108BD2E40009E075 /* WiiRemoteDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiiRemoteDiscovery.m; sourceTree = "<group>"; };
-		825D9F04108BD2E40009E075 /* WiiRemotePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemotePrivate.h; sourceTree = "<group>"; };
 		825D9F09108BD2FD0009E075 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = /System/Library/Frameworks/IOBluetooth.framework; sourceTree = "<absolute>"; };
 		825D9F0E108BD33C0009E075 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		825D9F0F108BD33C0009E075 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -166,7 +165,6 @@
 				825D9F01108BD2E40009E075 /* WiiRemote.m */,
 				825D9F02108BD2E40009E075 /* WiiRemoteDiscovery.h */,
 				825D9F03108BD2E40009E075 /* WiiRemoteDiscovery.m */,
-				825D9F04108BD2E40009E075 /* WiiRemotePrivate.h */,
 			);
 			path = wiiRemoteFramework;
 			sourceTree = "<group>";

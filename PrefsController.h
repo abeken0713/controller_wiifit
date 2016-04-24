@@ -6,6 +6,8 @@
 //  Copyright 2010 Ford Parsons. All rights reserved.
 //
 
+// Control the Preference Window
+
 #import <Foundation/Foundation.h>
 
 
