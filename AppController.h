@@ -29,7 +29,6 @@
 	float height_cm;
 }
 
-
 - (IBAction)doDiscovery:(id)sender;
 - (IBAction)doTare:(id)sender;
 

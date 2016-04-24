@@ -11,7 +11,7 @@
 		weightSampleIndex = 0;
         
         // Load TextStrings.plist
-        NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TextStrings" ofType:@"plist"];
+        //NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TextStrings" ofType:@"plist"];
         //strings = [[NSDictionary dictionaryWithContentsOfFile:plistPath] copy];
 		
 		if(!discovery) {
@@ -159,6 +159,7 @@
 	}
 
 	[weight setStringValue:[NSString stringWithFormat:@"%4.1fkg  %4.1flbs", MAX(0.0, trueWeight), MAX(0.0, (trueWeight) * 2.20462262)]];
+    NSLog(@"TR: %f, TL: %f, BR: %f, BL: %f\n", topRight, topLeft, bottomRight, bottomLeft);
 }
 
 #pragma mark WiiRemoteDiscoveryDelegate methods
