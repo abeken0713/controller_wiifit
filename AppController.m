@@ -13,8 +13,6 @@
         // Load TextStrings.plist
         NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TextStrings" ofType:@"plist"];
         strings = [[NSDictionary dictionaryWithContentsOfFile:plistPath] copy];
-            
-		[self performSelectorInBackground:@selector(showMessage) withObject:nil];
 		
 		if(!discovery) {
 			[self performSelector:@selector(doDiscovery:) withObject:self afterDelay:0.0f];
@@ -29,31 +27,12 @@
 {
 	[super dealloc];
 }
-
+// It won't show the weight if you delete this method!!!!!  _ABE_
 - (void)awakeFromNib {
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(expansionPortChanged:)
 												 name:@"WiiRemoteExpansionPortChangedNotification"
 											   object:nil];
-}
-
-- (void)showMessage
-{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	NSDictionary *d = [NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://snosrap.com/wiiscale/message%@.plist", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]]];
-	if(!!d)
-		[self performSelectorOnMainThread:@selector(showMessage:) withObject:d waitUntilDone:NO];
-
-	[pool release];
-}
-
-- (void)showMessage:(NSDictionary *)d
-{
-	[[NSAlert alertWithMessageText:[d objectForKey:@"Title"] defaultButton:@"Okay" alternateButton:nil otherButton:nil informativeTextWithFormat:[d objectForKey:@"Message"]] runModal];
-}
-     
-- (NSString*)stringForKey:(NSString *)key {
-    return [NSString stringWithString:[strings objectForKey:key]];
 }
 
 #pragma mark NSApplication
