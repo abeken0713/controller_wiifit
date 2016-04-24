@@ -7,16 +7,12 @@
 
 @interface AppController : NSWindowController<WiiRemoteDelegate, WiiRemoteDiscoveryDelegate> {
     
-	IBOutlet NSProgressIndicator* spinner;
-	IBOutlet NSProgressIndicator* ghspinner;
 	IBOutlet NSTextField* weight;
 	IBOutlet NSTextField* status;
 	IBOutlet NSTextField* bbstatus;
 	IBOutlet FPLevelIndicator* weightIndicator;
-	IBOutlet NSPopUpButton* profilesPopUp;
 	IBOutlet NSMenuItem* fileConnect;
 	IBOutlet NSMenuItem* fileTare;
-    IBOutlet NSButton *profileButton;
 	IBOutlet NSWindow* prefs;
 	//IBOutlet PrefsController *prefsController;
     

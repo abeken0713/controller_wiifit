@@ -13,10 +13,6 @@
         // Load TextStrings.plist
         NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TextStrings" ofType:@"plist"];
         strings = [[NSDictionary dictionaryWithContentsOfFile:plistPath] copy];
-        
-        // Load Stored Profiles
-        profiles = [[NSMutableArray alloc] 
-                    initWithArray:[self getFromStorage]];
             
 		[self performSelectorInBackground:@selector(showMessage) withObject:nil];
 		
@@ -32,23 +28,9 @@
 - (void)dealloc
 {
 	[super dealloc];
-	[profiles dealloc];
 }
 
 - (void)awakeFromNib {
-    
-    // Init. Profiles Popup
-    for (int i=0; i < [profiles count]; i++)
-        [profilesPopUp addItemWithTitle:[profiles objectAtIndex:i]];
-    
-    if (profiles.count>0) {
-        [profileButton setEnabled:true];
-    }
-    
-    [[profilesPopUp menu] addItem:[NSMenuItem separatorItem]];
-    [profilesPopUp addItemWithTitle:[self stringForKey:@"AddUser"]];
-    
-    
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(expansionPortChanged:)
 												 name:@"WiiRemoteExpansionPortChangedNotification"
@@ -74,45 +56,15 @@
     return [NSString stringWithString:[strings objectForKey:key]];
 }
 
-- (NSArray*)getFromStorage {
-    NSString *stringArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"profiles"];
-    if (stringArray.length) {
-        return [stringArray componentsSeparatedByString:@"|"];
-    } else {
-        return [NSArray array];
-    }
-}
-
-- (void)setToStorage:(NSArray *)storeArray {
-    NSMutableString *stringArray = [NSMutableString stringWithCapacity:0];
-    
-    for (int i=0; i < storeArray.count; i++) {
-        [stringArray appendString:[storeArray objectAtIndex:i]];
-        
-        if (i < storeArray.count-1)
-            [stringArray appendString:@"|"];
-    }
-    [[NSUserDefaults standardUserDefaults] setValue:stringArray forKey:@"profiles"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 #pragma mark NSApplication
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-    [self setToStorage:profiles];
 	[wii closeConnection];
 }
 
 #pragma mark Profiles
 
-- (IBAction)profileChanged:(id)sender {
-	if ([[profilesPopUp selectedItem].title
-          isEqualToString:[self stringForKey:@"AddUser"]]) {
-        [self showPrefs:self];
-    }
-    
-}
 
 #pragma mark Wii Balance Board
 
@@ -123,7 +75,6 @@
 		[discovery setDelegate:self];
 		[discovery start];
 		
-		[spinner startAnimation:self];
 		[bbstatus setStringValue:@"Searching..."];
 		[fileConnect setTitle:@"Stop Searching for Balance Board"];
 		[status setStringValue:@"Press the red 'sync' button..."];
@@ -138,7 +89,6 @@
 			wii = nil;
 		}
 		
-		[spinner stopAnimation:self];
 		[bbstatus setStringValue:@"Disconnected"];
 		[fileConnect setTitle:@"Connect to Balance Board"];
 		[status setStringValue:@""];
@@ -173,8 +123,7 @@
 }
 
 - (void) wiiRemoteDisconnected:(IOBluetoothDevice*) device
-{	
-	[spinner stopAnimation:self];
+{
 	[bbstatus setStringValue:@"Disconnected"];
 	
 	[device closeConnection];
@@ -241,7 +190,6 @@
 	wii = [wiimote retain];
 	[wii setDelegate:self];
 
-	[spinner stopAnimation:self];
 	[bbstatus setStringValue:@"Connected"];
 	
 	[status setStringValue:@"Tap the button to tare, then step on..."];
@@ -252,11 +200,9 @@
 	NSLog(@"Error: %u", code);
 		
 	// Keep trying...
-	[spinner stopAnimation:self];
 	[discovery stop];
 	sleep(1);
 	[discovery start];
-	[spinner startAnimation:self];
 }
 
 - (void) willStartWiimoteConnections {
