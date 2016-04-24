@@ -12,7 +12,7 @@
         
         // Load TextStrings.plist
         NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TextStrings" ofType:@"plist"];
-        strings = [[NSDictionary dictionaryWithContentsOfFile:plistPath] copy];
+        //strings = [[NSDictionary dictionaryWithContentsOfFile:plistPath] copy];
 		
 		if(!discovery) {
 			[self performSelector:@selector(doDiscovery:) withObject:self afterDelay:0.0f];

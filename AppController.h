@@ -15,9 +15,6 @@
 	IBOutlet NSMenuItem* fileTare;
 	IBOutlet NSWindow* prefs;
 	//IBOutlet PrefsController *prefsController;
-    
-    NSMutableArray *profiles;
-    NSDictionary *strings;
 
 	WiiRemoteDiscovery* discovery;
 	WiiRemote* wii;
@@ -32,9 +29,6 @@
 	float height_cm;
 }
 
-- (NSString*)stringForKey:(NSString *)key;
-- (NSArray*)getFromStorage;
-- (void)setToStorage:(NSArray *)storeArray;
 
 - (IBAction)doDiscovery:(id)sender;
 - (IBAction)doTare:(id)sender;
