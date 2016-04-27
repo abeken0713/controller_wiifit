@@ -17,7 +17,8 @@
 		if(!discovery) {
 			[self performSelector:@selector(doDiscovery:) withObject:self afterDelay:0.0f];
 		}
-    
+        
+        
 		
     }
     return self;
@@ -33,6 +34,13 @@
 											 selector:@selector(expansionPortChanged:)
 												 name:@"WiiRemoteExpansionPortChangedNotification"
 											   object:nil];
+}
+
+- (void)registerAsObserver{
+    [self addObserver:mine forKeyPath:@"weightBL" options:NSKeyValueChangeNewKey context:nil];
+    [self addObserver:mine forKeyPath:@"weightBR" options:NSKeyValueChangeNewKey context:nil];
+    [self addObserver:mine forKeyPath:@"weightTL" options:NSKeyValueChangeNewKey context:nil];
+    [self addObserver:mine forKeyPath:@"weightTR" options:NSKeyValueChangeNewKey context:nil];
 }
 
 #pragma mark NSApplication
@@ -126,40 +134,25 @@
 	[weightIndicator setDoubleValue:trueWeight];
 	
 	if(trueWeight > 10.0) {
-		weightSamples[weightSampleIndex] = trueWeight;
-		weightSampleIndex = (weightSampleIndex + 1) % 100;
-		
-		float sum = 0;
-		float sum_sqrs = 0;
-		
-		for (int i = 0; i < 100; i++)
-		{
-			sum += weightSamples[i];
-			sum_sqrs += weightSamples[i] * weightSamples[i];
-		}
-		
-		avgWeight = sum / 100.0;
-		float var = sum_sqrs / 100.0 - (avgWeight * avgWeight);
-		float std_dev = sqrt(var);
-
-		if(!sent)
-			[status setStringValue:@"Please hold still..."];
-		else
-			[status setStringValue:[NSString stringWithFormat:@"Sent weight of %4.1fkg.  Thanks!", avgWeight]];
-
-		
-		if(std_dev < 0.1 && !sent)
-		{
-			sent = YES;
-		}
-		
+        
+        cogX = ((topRight + bottomRight) - (topLeft + bottomLeft))/(lastWeight);
+        cogY = ((topRight + topLeft) - (bottomRight + bottomLeft))/(lastWeight);
+        
+        [openglWin reWriteX:cogX Y:cogY];
 	} else {
-		sent = NO;
-		[status setStringValue:@"Tap the button to tare, then step on..."];
-	}
-
-	[weight setStringValue:[NSString stringWithFormat:@"%4.1fkg  %4.1flbs", MAX(0.0, trueWeight), MAX(0.0, (trueWeight) * 2.20462262)]];
-    NSLog(@"TR: %f, TL: %f, BR: %f, BL: %f\n", topRight, topLeft, bottomRight, bottomLeft);
+        cogX = 0.0f;
+        cogY = 0.0f;
+			}
+    [weight setStringValue:[NSString stringWithFormat:@"%4.1fkg  %4.1flbs", MAX(0.0, trueWeight), MAX(0.0, (trueWeight) * 2.20462262)]];
+    
+    
+    
+    
+    //NSLog(@"\n COG x: %f, y: %f", cogX, cogY);
+    
+    //NSLog(@"\nTR: %f, TL: %f, BR: %f, BL: %f", topRight, topLeft, bottomRight, bottomLeft);
+    
+    
 }
 
 #pragma mark WiiRemoteDiscoveryDelegate methods
@@ -188,4 +181,5 @@
 - (void) willStartWiimoteConnections {
 
 }
+
 @end
