@@ -1,6 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
 //#import "PrefsController.h"
+#import "Socket.h"
 #import "MyObject.h"
 #import "WiiRemote.h"
 #import "WiiRemoteDiscovery.h"
@@ -35,7 +36,7 @@
 	float height_cm;
     float cogX;
     float cogY;
-    @public
+    //@public
         float weightTR;
         float weightBR;
         float weightTL;
