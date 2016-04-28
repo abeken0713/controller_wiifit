@@ -16,6 +16,8 @@
     float BL;
 }
 
+- (void)printLogString:(NSString *)str Value:(float)x;
+
 - (void)observeValueForKeyPath:(NSString *)keyPath     //Class
                       ofObject:(id)object              //Object
                         change:(NSDictionary *)change  //the way of change

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		6F39EC9C1CD215D6003A3081 /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F39EC9B1CD215D6003A3081 /* Socket.m */; };
 		6FBF08A81CCD312400CEDF1A /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF08A71CCD312400CEDF1A /* MyOpenGLView.m */; };
 		6FBF08AA1CCD31E300CEDF1A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF08A91CCD31E300CEDF1A /* OpenGL.framework */; };
 		6FBF08AC1CCD3E7F00CEDF1A /* MyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF08AB1CCD3E7F00CEDF1A /* MyObject.m */; };
@@ -44,6 +45,8 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* WiiScale_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiScale_Prefix.pch; sourceTree = "<group>"; };
+		6F39EC9B1CD215D6003A3081 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
+		6F872AE51CD2579B00E92EDD /* SocketIO-Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocketIO-Mac.h"; sourceTree = "<group>"; };
 		6FBF08A61CCD310000CEDF1A /* MyOpenGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		6FBF08A71CCD312400CEDF1A /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		6FBF08A91CCD31E300CEDF1A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -80,9 +83,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6F39EC9B1CD215D6003A3081 /* Socket.m */,
 				6FBF08AD1CCD3E8800CEDF1A /* MyObject.h */,
 				6FBF08AB1CCD3E7F00CEDF1A /* MyObject.m */,
 				825D9F0E108BD33C0009E075 /* AppController.h */,
+				6F872AE51CD2579B00E92EDD /* SocketIO-Mac.h */,
 				825D9F0F108BD33C0009E075 /* AppController.m */,
 				6FBF08A61CCD310000CEDF1A /* MyOpenGLView.h */,
 				6FBF08A71CCD312400CEDF1A /* MyOpenGLView.m */,
@@ -242,6 +247,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				825D9F05108BD2E40009E075 /* WiiRemote.m in Sources */,
+				6F39EC9C1CD215D6003A3081 /* Socket.m in Sources */,
 				6FBF08AC1CCD3E7F00CEDF1A /* MyObject.m in Sources */,
 				6FBF08A81CCD312400CEDF1A /* MyOpenGLView.m in Sources */,
 				825D9F06108BD2E40009E075 /* WiiRemoteDiscovery.m in Sources */,

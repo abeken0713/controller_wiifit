@@ -11,6 +11,10 @@
 
 @implementation MyObject
 
+- (void)printLogString:(NSString *)str Value:(float)x{
+    NSLog(@"\n%@: %f", str, x);
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath     //Class
                       ofObject:(id)object              //Object
                         change:(NSDictionary *)change  //the way of change

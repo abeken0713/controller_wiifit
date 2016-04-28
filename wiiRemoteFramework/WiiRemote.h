@@ -167,8 +167,6 @@ typedef enum {
 //- (IOReturn) getMii:(unsigned int) slot;
 
 - (void) sendWiiRemoteButtonEvent:(UInt16) data;
-- (void) sendWiiNunchukButtonEvent:(UInt16) data;
-- (void) sendWiiClassicControllerButtonEvent:(UInt16) data;
 
 @end
 

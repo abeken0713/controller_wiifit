@@ -17,9 +17,11 @@
 		if(!discovery) {
 			[self performSelector:@selector(doDiscovery:) withObject:self afterDelay:0.0f];
 		}
-        
-        
+        //NSLog(@"initializeABE");
+        [self registerAsObserver];
 		
+        
+        
     }
     return self;
 }
@@ -37,10 +39,11 @@
 }
 
 - (void)registerAsObserver{
-    [self addObserver:mine forKeyPath:@"weightBL" options:NSKeyValueChangeNewKey context:nil];
-    [self addObserver:mine forKeyPath:@"weightBR" options:NSKeyValueChangeNewKey context:nil];
-    [self addObserver:mine forKeyPath:@"weightTL" options:NSKeyValueChangeNewKey context:nil];
-    [self addObserver:mine forKeyPath:@"weightTR" options:NSKeyValueChangeNewKey context:nil];
+    [self addObserver:mine forKeyPath:@"weightBL" options:0 context:nil];
+    //[self addObserver:mine forKeyPath:@"weightBR" options:NSKeyValueChangeNewKey context:nil];
+    //[self addObserver:mine forKeyPath:@"weightTL" options:NSKeyValueChangeNewKey context:nil];
+    //[self addObserver:mine forKeyPath:@"weightTR" options:NSKeyValueChangeNewKey context:nil];
+    NSLog(@"Added as observer");
 }
 
 #pragma mark NSApplication
@@ -133,19 +136,22 @@
 	float trueWeight = lastWeight + tare;
 	[weightIndicator setDoubleValue:trueWeight];
 	
-	if(trueWeight > 10.0) {
+	if(trueWeight > 5.0f) {
         
         cogX = ((topRight + bottomRight) - (topLeft + bottomLeft))/(lastWeight);
         cogY = ((topRight + topLeft) - (bottomRight + bottomLeft))/(lastWeight);
         
-        [openglWin reWriteX:cogX Y:cogY];
+        
 	} else {
         cogX = 0.0f;
         cogY = 0.0f;
-			}
+    }
+    [openglWin reWriteX:cogX Y:cogY];
+    
     [weight setStringValue:[NSString stringWithFormat:@"%4.1fkg  %4.1flbs", MAX(0.0, trueWeight), MAX(0.0, (trueWeight) * 2.20462262)]];
     
     
+    //[mine observeValueForKeyPath:@"weightBL" ofObject:self change:NSKeyValueChangeNewKey context:nil];
     
     
     //NSLog(@"\n COG x: %f, y: %f", cogX, cogY);
@@ -162,6 +168,7 @@
 	[wii release];
 	wii = [wiimote retain];
 	[wii setDelegate:self];
+    
 
 	[bbstatus setStringValue:@"Connected"];
 	
