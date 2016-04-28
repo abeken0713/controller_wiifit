@@ -24,7 +24,7 @@
         //[self registerAsObserver];
         //[self testSocket];
         //wiisocket = [[WiiScaleSocket alloc] init];
-        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8080"];
+        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8000"];
         
         socket = [[SocketIOClient alloc] initWithSocketURL:url options:@{@"log": @YES, @"forcePolling": @YES}];
         
@@ -50,7 +50,7 @@
 
 -(IBAction)send:(id)sender{
     NSLog(@"SENDING SOCKET");
-    [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:@"Socket from ABE", @"Socket from KEN", nil]];
+    [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:@"Socket from ABE", nil]];
     [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:@"Socket from KEN", nil]];
     NSLog(@"SENDED SOCKET");
 }
