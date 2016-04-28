@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
 //#import "PrefsController.h"
-#import "Socket.h"
+//#import "Socket.m"
 #import "MyObject.h"
 #import "WiiRemote.h"
 #import "WiiRemoteDiscovery.h"
@@ -37,10 +37,10 @@
     float cogX;
     float cogY;
     //@public
-        float weightTR;
-        float weightBR;
-        float weightTL;
-        float weightBL;
+    float weightTR;
+    float weightBR;
+    float weightTL;
+    float weightBL;
 }
 
 - (IBAction)doDiscovery:(id)sender;

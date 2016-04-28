@@ -9,6 +9,28 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		6F39EC9C1CD215D6003A3081 /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F39EC9B1CD215D6003A3081 /* Socket.m */; };
+		6F872AE71CD263CA00E92EDD /* Source in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F872AE61CD263CA00E92EDD /* Source */; };
+		6F872B301CD27B7D00E92EDD /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B1A1CD27B7D00E92EDD /* SocketAckEmitter.swift */; };
+		6F872B311CD27B7D00E92EDD /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B1B1CD27B7D00E92EDD /* SocketAckManager.swift */; };
+		6F872B321CD27B7D00E92EDD /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B1C1CD27B7D00E92EDD /* SocketAnyEvent.swift */; };
+		6F872B331CD27B7D00E92EDD /* SocketClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B1D1CD27B7D00E92EDD /* SocketClientSpec.swift */; };
+		6F872B341CD27B7D00E92EDD /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B1E1CD27B7D00E92EDD /* SocketEngine.swift */; };
+		6F872B351CD27B7D00E92EDD /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B1F1CD27B7D00E92EDD /* SocketEngineClient.swift */; };
+		6F872B361CD27B7D00E92EDD /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B201CD27B7D00E92EDD /* SocketEnginePacketType.swift */; };
+		6F872B371CD27B7D00E92EDD /* SocketEnginePollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B211CD27B7D00E92EDD /* SocketEnginePollable.swift */; };
+		6F872B381CD27B7D00E92EDD /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B221CD27B7D00E92EDD /* SocketEngineSpec.swift */; };
+		6F872B391CD27B7D00E92EDD /* SocketEngineWebsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B231CD27B7D00E92EDD /* SocketEngineWebsocket.swift */; };
+		6F872B3A1CD27B7D00E92EDD /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B241CD27B7D00E92EDD /* SocketEventHandler.swift */; };
+		6F872B3B1CD27B7D00E92EDD /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B251CD27B7D00E92EDD /* SocketIOClient.swift */; };
+		6F872B3C1CD27B7D00E92EDD /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B261CD27B7D00E92EDD /* SocketIOClientOption.swift */; };
+		6F872B3D1CD27B7D00E92EDD /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B271CD27B7D00E92EDD /* SocketIOClientStatus.swift */; };
+		6F872B3E1CD27B7D00E92EDD /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B281CD27B7D00E92EDD /* SocketLogger.swift */; };
+		6F872B3F1CD27B7D00E92EDD /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B291CD27B7D00E92EDD /* SocketPacket.swift */; };
+		6F872B401CD27B7D00E92EDD /* SocketParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B2A1CD27B7D00E92EDD /* SocketParsable.swift */; };
+		6F872B411CD27B7D00E92EDD /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B2B1CD27B7D00E92EDD /* SocketStringReader.swift */; };
+		6F872B421CD27B7D00E92EDD /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B2C1CD27B7D00E92EDD /* SocketTypes.swift */; };
+		6F872B431CD27B7D00E92EDD /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B2D1CD27B7D00E92EDD /* SwiftRegex.swift */; };
+		6F872B441CD27B7D00E92EDD /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F872B2E1CD27B7D00E92EDD /* WebSocket.swift */; };
 		6FBF08A81CCD312400CEDF1A /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF08A71CCD312400CEDF1A /* MyOpenGLView.m */; };
 		6FBF08AA1CCD31E300CEDF1A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF08A91CCD31E300CEDF1A /* OpenGL.framework */; };
 		6FBF08AC1CCD3E7F00CEDF1A /* MyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF08AB1CCD3E7F00CEDF1A /* MyObject.m */; };
@@ -47,6 +69,29 @@
 		32CA4F630368D1EE00C91783 /* WiiScale_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiScale_Prefix.pch; sourceTree = "<group>"; };
 		6F39EC9B1CD215D6003A3081 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
 		6F872AE51CD2579B00E92EDD /* SocketIO-Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocketIO-Mac.h"; sourceTree = "<group>"; };
+		6F872AE61CD263CA00E92EDD /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Source; sourceTree = "<group>"; };
+		6F872B181CD267AC00E92EDD /* WiiScale-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WiiScale-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F872B1A1CD27B7D00E92EDD /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
+		6F872B1B1CD27B7D00E92EDD /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
+		6F872B1C1CD27B7D00E92EDD /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
+		6F872B1D1CD27B7D00E92EDD /* SocketClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClientSpec.swift; sourceTree = "<group>"; };
+		6F872B1E1CD27B7D00E92EDD /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
+		6F872B1F1CD27B7D00E92EDD /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
+		6F872B201CD27B7D00E92EDD /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePacketType.swift; sourceTree = "<group>"; };
+		6F872B211CD27B7D00E92EDD /* SocketEnginePollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEnginePollable.swift; sourceTree = "<group>"; };
+		6F872B221CD27B7D00E92EDD /* SocketEngineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineSpec.swift; sourceTree = "<group>"; };
+		6F872B231CD27B7D00E92EDD /* SocketEngineWebsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineWebsocket.swift; sourceTree = "<group>"; };
+		6F872B241CD27B7D00E92EDD /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
+		6F872B251CD27B7D00E92EDD /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
+		6F872B261CD27B7D00E92EDD /* SocketIOClientOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientOption.swift; sourceTree = "<group>"; };
+		6F872B271CD27B7D00E92EDD /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientStatus.swift; sourceTree = "<group>"; };
+		6F872B281CD27B7D00E92EDD /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
+		6F872B291CD27B7D00E92EDD /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
+		6F872B2A1CD27B7D00E92EDD /* SocketParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParsable.swift; sourceTree = "<group>"; };
+		6F872B2B1CD27B7D00E92EDD /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketStringReader.swift; sourceTree = "<group>"; };
+		6F872B2C1CD27B7D00E92EDD /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
+		6F872B2D1CD27B7D00E92EDD /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
+		6F872B2E1CD27B7D00E92EDD /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		6FBF08A61CCD310000CEDF1A /* MyOpenGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		6FBF08A71CCD312400CEDF1A /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		6FBF08A91CCD31E300CEDF1A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -71,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F872AE71CD263CA00E92EDD /* Source in Frameworks */,
 				6FBF08AA1CCD31E300CEDF1A /* OpenGL.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				825D9F0A108BD2FD0009E075 /* IOBluetooth.framework in Frameworks */,
@@ -83,11 +129,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6F872B181CD267AC00E92EDD /* WiiScale-Bridging-Header.h */,
 				6F39EC9B1CD215D6003A3081 /* Socket.m */,
 				6FBF08AD1CCD3E8800CEDF1A /* MyObject.h */,
 				6FBF08AB1CCD3E7F00CEDF1A /* MyObject.m */,
-				825D9F0E108BD33C0009E075 /* AppController.h */,
 				6F872AE51CD2579B00E92EDD /* SocketIO-Mac.h */,
+				825D9F0E108BD33C0009E075 /* AppController.h */,
 				825D9F0F108BD33C0009E075 /* AppController.m */,
 				6FBF08A61CCD310000CEDF1A /* MyOpenGLView.h */,
 				6FBF08A71CCD312400CEDF1A /* MyOpenGLView.m */,
@@ -125,6 +172,7 @@
 		29B97314FDCFA39411CA2CEA /* GoogleHealthWeight */ = {
 			isa = PBXGroup;
 			children = (
+				6F872B451CD27B8400E92EDD /* Source */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				825D9EFE108BD2E40009E075 /* wiiRemoteFramework */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -160,11 +208,40 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F872AE61CD263CA00E92EDD /* Source */,
 				6FBF08A91CCD31E300CEDF1A /* OpenGL.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F872B451CD27B8400E92EDD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6F872B1A1CD27B7D00E92EDD /* SocketAckEmitter.swift */,
+				6F872B1B1CD27B7D00E92EDD /* SocketAckManager.swift */,
+				6F872B1C1CD27B7D00E92EDD /* SocketAnyEvent.swift */,
+				6F872B1D1CD27B7D00E92EDD /* SocketClientSpec.swift */,
+				6F872B1E1CD27B7D00E92EDD /* SocketEngine.swift */,
+				6F872B1F1CD27B7D00E92EDD /* SocketEngineClient.swift */,
+				6F872B201CD27B7D00E92EDD /* SocketEnginePacketType.swift */,
+				6F872B211CD27B7D00E92EDD /* SocketEnginePollable.swift */,
+				6F872B221CD27B7D00E92EDD /* SocketEngineSpec.swift */,
+				6F872B231CD27B7D00E92EDD /* SocketEngineWebsocket.swift */,
+				6F872B241CD27B7D00E92EDD /* SocketEventHandler.swift */,
+				6F872B251CD27B7D00E92EDD /* SocketIOClient.swift */,
+				6F872B261CD27B7D00E92EDD /* SocketIOClientOption.swift */,
+				6F872B271CD27B7D00E92EDD /* SocketIOClientStatus.swift */,
+				6F872B281CD27B7D00E92EDD /* SocketLogger.swift */,
+				6F872B291CD27B7D00E92EDD /* SocketPacket.swift */,
+				6F872B2A1CD27B7D00E92EDD /* SocketParsable.swift */,
+				6F872B2B1CD27B7D00E92EDD /* SocketStringReader.swift */,
+				6F872B2C1CD27B7D00E92EDD /* SocketTypes.swift */,
+				6F872B2D1CD27B7D00E92EDD /* SwiftRegex.swift */,
+				6F872B2E1CD27B7D00E92EDD /* WebSocket.swift */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		825D9EFE108BD2E40009E075 /* wiiRemoteFramework */ = {
@@ -245,13 +322,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F872B331CD27B7D00E92EDD /* SocketClientSpec.swift in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				825D9F05108BD2E40009E075 /* WiiRemote.m in Sources */,
+				6F872B431CD27B7D00E92EDD /* SwiftRegex.swift in Sources */,
+				6F872B3C1CD27B7D00E92EDD /* SocketIOClientOption.swift in Sources */,
 				6F39EC9C1CD215D6003A3081 /* Socket.m in Sources */,
+				6F872B301CD27B7D00E92EDD /* SocketAckEmitter.swift in Sources */,
+				6F872B321CD27B7D00E92EDD /* SocketAnyEvent.swift in Sources */,
+				6F872B391CD27B7D00E92EDD /* SocketEngineWebsocket.swift in Sources */,
+				6F872B3A1CD27B7D00E92EDD /* SocketEventHandler.swift in Sources */,
 				6FBF08AC1CCD3E7F00CEDF1A /* MyObject.m in Sources */,
+				6F872B351CD27B7D00E92EDD /* SocketEngineClient.swift in Sources */,
+				6F872B411CD27B7D00E92EDD /* SocketStringReader.swift in Sources */,
+				6F872B311CD27B7D00E92EDD /* SocketAckManager.swift in Sources */,
+				6F872B441CD27B7D00E92EDD /* WebSocket.swift in Sources */,
 				6FBF08A81CCD312400CEDF1A /* MyOpenGLView.m in Sources */,
 				825D9F06108BD2E40009E075 /* WiiRemoteDiscovery.m in Sources */,
+				6F872B3D1CD27B7D00E92EDD /* SocketIOClientStatus.swift in Sources */,
 				825D9F10108BD33C0009E075 /* AppController.m in Sources */,
+				6F872B3E1CD27B7D00E92EDD /* SocketLogger.swift in Sources */,
+				6F872B421CD27B7D00E92EDD /* SocketTypes.swift in Sources */,
+				6F872B3B1CD27B7D00E92EDD /* SocketIOClient.swift in Sources */,
+				6F872B361CD27B7D00E92EDD /* SocketEnginePacketType.swift in Sources */,
+				6F872B401CD27B7D00E92EDD /* SocketParsable.swift in Sources */,
+				6F872B381CD27B7D00E92EDD /* SocketEngineSpec.swift in Sources */,
+				6F872B341CD27B7D00E92EDD /* SocketEngine.swift in Sources */,
+				6F872B3F1CD27B7D00E92EDD /* SocketPacket.swift in Sources */,
+				6F872B371CD27B7D00E92EDD /* SocketEnginePollable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,9 +378,12 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../gdata-objectivec-client-read-only/Source/build/Release\"",
@@ -297,17 +398,23 @@
 				GCC_PREFIX_HEADER = WiiScale_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snosrap.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = WiiScale;
+				SWIFT_OBJC_BRIDGING_HEADER = "WiiScale-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../gdata-objectivec-client-read-only/Source/build/Release\"",
@@ -319,8 +426,10 @@
 				GCC_PREFIX_HEADER = WiiScale_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snosrap.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = WiiScale;
+				SWIFT_OBJC_BRIDGING_HEADER = "WiiScale-Bridging-Header.h";
 			};
 			name = Release;
 		};

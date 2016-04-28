@@ -1,4 +1,5 @@
 #import "AppController.h"
+//#import "
 
 @implementation AppController
 #pragma mark Window
@@ -187,6 +188,49 @@
 
 - (void) willStartWiimoteConnections {
 
+}
+
+@end
+
+#pragma mark IOSocketFromSwift
+
+#import "WiiScale-Swift.h"
+
+
+@interface WiiScaleSocket : NSObject{
+    SocketIOClient* socket;
+}
+
+-(id)init;
+
+@end
+
+@implementation WiiScaleSocket
+-(id)init{
+    self = [super init];
+    if (self){
+        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8080"];
+        
+        socket = [[SocketIOClient alloc] initWithSocketURL:url options:@{@"log": @YES, @"forcePolling": @YES}];
+        
+        [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            NSLog(@"socket connected");
+        }];
+        
+        [socket on:@"currentAmount" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            double cur = [[data objectAtIndex:0] floatValue];
+            
+            [socket emitWithAck:@"canUpdate" withItems:@[@(cur)]](0, ^(NSArray* data) {
+                [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
+            });
+            
+            [ack with:@[@"Got your currentAmount, ", @"dude"]];
+        }];
+        
+        [socket connect];
+    }
+    
+    return self;
 }
 
 @end
