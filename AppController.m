@@ -1,8 +1,10 @@
 #import "AppController.h"
-//#import "
 
 @implementation AppController
 #pragma mark Window
+
+
+
 
 - (id)init
 {
@@ -19,12 +21,38 @@
 			[self performSelector:@selector(doDiscovery:) withObject:self afterDelay:0.0f];
 		}
         //NSLog(@"initializeABE");
-        [self registerAsObserver];
-		
+        //[self registerAsObserver];
+        //[self testSocket];
+        //wiisocket = [[WiiScaleSocket alloc] init];
+        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8080"];
         
+        socket = [[SocketIOClient alloc] initWithSocketURL:url options:@{@"log": @YES, @"forcePolling": @YES}];
         
+        [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            NSLog(@"socket connected");
+        }];
+        
+        [socket on:@"currentAmount" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            double cur = [[data objectAtIndex:0] floatValue];
+            
+            [socket emitWithAck:@"canUpdate" withItems:@[@(cur)]](0, ^(NSArray* data) {
+                [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
+            });
+            
+            [ack with:@[@"Got your currentAmount, ", @"dude"]];
+        }];
+        
+        [socket connect];
+
     }
     return self;
+}
+
+-(IBAction)send:(id)sender{
+    NSLog(@"SENDING SOCKET");
+    [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:@"Socket from ABE", @"Socket from KEN", nil]];
+    [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:@"Socket from KEN", nil]];
+    NSLog(@"SENDED SOCKET");
 }
 
 - (void)dealloc
@@ -38,7 +66,7 @@
 												 name:@"WiiRemoteExpansionPortChangedNotification"
 											   object:nil];
 }
-
+/*
 - (void)registerAsObserver{
     [self addObserver:mine forKeyPath:@"weightBL" options:0 context:nil];
     //[self addObserver:mine forKeyPath:@"weightBR" options:NSKeyValueChangeNewKey context:nil];
@@ -46,7 +74,7 @@
     //[self addObserver:mine forKeyPath:@"weightTR" options:NSKeyValueChangeNewKey context:nil];
     NSLog(@"Added as observer");
 }
-
+*/
 #pragma mark NSApplication
 
 - (void)applicationWillTerminate:(NSNotification *)notification
@@ -151,6 +179,7 @@
     
     [weight setStringValue:[NSString stringWithFormat:@"%4.1fkg  %4.1flbs", MAX(0.0, trueWeight), MAX(0.0, (trueWeight) * 2.20462262)]];
     
+    [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%.4f", cogX], nil]];
     
     //[mine observeValueForKeyPath:@"weightBL" ofObject:self change:NSKeyValueChangeNewKey context:nil];
     
@@ -188,49 +217,6 @@
 
 - (void) willStartWiimoteConnections {
 
-}
-
-@end
-
-#pragma mark IOSocketFromSwift
-
-#import "WiiScale-Swift.h"
-
-
-@interface WiiScaleSocket : NSObject{
-    SocketIOClient* socket;
-}
-
--(id)init;
-
-@end
-
-@implementation WiiScaleSocket
--(id)init{
-    self = [super init];
-    if (self){
-        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8080"];
-        
-        socket = [[SocketIOClient alloc] initWithSocketURL:url options:@{@"log": @YES, @"forcePolling": @YES}];
-        
-        [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
-            NSLog(@"socket connected");
-        }];
-        
-        [socket on:@"currentAmount" callback:^(NSArray* data, SocketAckEmitter* ack) {
-            double cur = [[data objectAtIndex:0] floatValue];
-            
-            [socket emitWithAck:@"canUpdate" withItems:@[@(cur)]](0, ^(NSArray* data) {
-                [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
-            });
-            
-            [ack with:@[@"Got your currentAmount, ", @"dude"]];
-        }];
-        
-        [socket connect];
-    }
-    
-    return self;
 }
 
 @end

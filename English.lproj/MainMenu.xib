@@ -132,6 +132,17 @@
                         <rect key="frame" x="34" y="112" width="300" height="160"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </openGLView>
+                    <button verticalHuggingPriority="750" id="hLl-xg-OgF">
+                        <rect key="frame" x="109" y="37" width="151" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="SocketTest Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m0Q-y1-1s7">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="send:" target="453" id="CKu-L7-6cL"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="326" y="401"/>
@@ -140,79 +151,15 @@
         <customObject id="453" customClass="AppController">
             <connections>
                 <outlet property="bbstatus" destination="517" id="565"/>
+                <outlet property="btn" destination="hLl-xg-OgF" id="od9-4i-Li7"/>
                 <outlet property="fileConnect" destination="507" id="521"/>
                 <outlet property="fileTare" destination="509" id="522"/>
                 <outlet property="openglWin" destination="vlt-iD-T00" id="6V7-jv-3JB"/>
-                <outlet property="prefs" destination="583" id="609"/>
-                <outlet property="prefsController" destination="582" id="607"/>
                 <outlet property="status" destination="504" id="519"/>
                 <outlet property="weight" destination="459" id="461"/>
                 <outlet property="weightIndicator" destination="620" id="622"/>
                 <outlet property="window" destination="371" id="615"/>
             </connections>
         </customObject>
-        <customObject id="582" customClass="PrefsController">
-            <connections>
-                <outlet property="addOrDeleteBtn" destination="585" id="625"/>
-                <outlet property="configureSheet" destination="583" id="599"/>
-                <outlet property="mainWindow" destination="371" id="598"/>
-                <outlet property="userText" destination="589" id="601"/>
-            </connections>
-        </customObject>
-        <window title="Prefs" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="583">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="381" width="313" height="95"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <view key="contentView" id="584">
-                <rect key="frame" x="0.0" y="0.0" width="313" height="95"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" id="586">
-                        <rect key="frame" x="152" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="595">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="cancelBtnClicked:" target="582" id="623"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" id="585">
-                        <rect key="frame" x="70" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="596">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="addOrDeleteBtnClicked:" target="582" id="624"/>
-                        </connections>
-                    </button>
-                    <textField verticalHuggingPriority="750" id="589">
-                        <rect key="frame" x="93" y="58" width="200" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="592">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" id="590">
-                        <rect key="frame" x="17" y="58" width="71" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Username:" id="591">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                </subviews>
-            </view>
-        </window>
     </objects>
 </document>

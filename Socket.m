@@ -7,41 +7,40 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WiiScale-Swift.h"
-/*
+#import "Socket.h"
 
-@interface AbeSocket : NSObject
-
-@property SocketIOClient* socket;
-
--(void)socketInit;
-
-@end
-
-@implementation AbeSocket
-
--(void)socketInit{
-    NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:8080"];
-    
-    SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:url options:@{@"log": @YES, @"forcePolling": @YES}];
-    
-    [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        NSLog(@"socket connected");
-    }];
-    
-    [socket on:@"currentAmount" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        double cur = [[data objectAtIndex:0] floatValue];
+@implementation WiiScaleSocket
+-(id)init{
+    self = [super init];
+    if (self){
+        NSURL* url = [[NSURL alloc] initWithString:@"abe://localhost:8080"];
         
-        [socket emitWithAck:@"canUpdate" withItems:@[@(cur)]](0, ^(NSArray* data) {
-            [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
-        });
+        socket = [[SocketIOClient alloc] initWithSocketURL:url options:@{@"log": @YES, @"forcePolling": @YES}];
         
-        [ack with:@[@"Got your currentAmount, ", @"dude"]];
-    }];
+        [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            NSLog(@"socket connected");
+        }];
+        
+        [socket on:@"currentAmount" callback:^(NSArray* data, SocketAckEmitter* ack) {
+            double cur = [[data objectAtIndex:0] floatValue];
+            
+            [socket emitWithAck:@"canUpdate" withItems:@[@(cur)]](0, ^(NSArray* data) {
+                [socket emit:@"update" withItems:@[@{@"amount": @(cur + 2.50)}]];
+            });
+            
+            [ack with:@[@"Got your currentAmount, ", @"dude"]];
+        }];
+        
+        [socket connect];
+    }
     
-    [socket connect];
-     
+    return self;
 }
+/*
+-(IBAction)send:(id)sender{
+    NSLog(@"SENDING SOCKET");
+    [socket emit:@"from_client" withItems:[NSArray arrayWithObjects:@"Socket from ABE", nil]];
+    NSLog(@"SENDED SOCKET");
+}*/
 
 @end
-*/
